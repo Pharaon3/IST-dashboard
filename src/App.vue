@@ -1,19 +1,22 @@
 <template>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
-    rel="stylesheet"
-  />
-  <router-view />
+  <div
+    class="p-5 flex h-screen w-full bg-gradient-to-b from-[#BFDCFD] to-[#FDFCFF] gap-5"
+  >
+    <!-- Left Sidebar -->
+    <AppSidebar />
+
+    <main class="flex-1 overflow-auto rounded-2xl">
+      <router-view></router-view>
+    </main>
+  </div>
 </template>
 
 <script>
-export default {
-  name: 'App',
-}
-</script>
+import AppSidebar from "./components/AppSidebar.vue";
 
-<style>
-/* Add any global styles if needed */
-</style>
+export default {
+  components: {
+    AppSidebar,
+  },
+};
+</script>

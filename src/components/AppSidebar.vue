@@ -1,16 +1,9 @@
 <template>
-  <aside :class="['w-[280px]', mobileOpen ? 'block' : 'hidden', 'md:block']">
-    <div class="bg-[#A2A2A240] h-[95vh] shadow-md rounded-2xl p-4 relative">
-      <!-- Mobile Toggle Button -->
-      <button
-        @click="mobileOpen = !mobileOpen"
-        class="absolute top-4 right-4 md:hidden text-gray-800"
-      >
-        <Icon :icon="mobileOpen ? 'mdi:close' : 'mdi:menu'" width="24" height="24" />
-      </button>
-
+  <aside class="w-[280px]">
+    <div class="bg-[#A2A2A240] h-[95vh] shadow-md rounded-2xl p-4">
       <div class="flex items-center gap-2">
         <div class="flex items-center justify-center rounded-full">
+          <!-- Logo -->
           <img src="@/assets/logo.svg" alt="Logo" />
         </div>
         <span class="text-xl font-medium text-gray-800">Pappays</span>
@@ -55,6 +48,7 @@
             v-if="item.hasDropdown && openDropdown === item.to"
             class="mt-2 space-y-2"
           >
+            <!-- Dropdown content dynamically rendered -->
             <div
               v-for="dropdownItem in item.dropdownItems"
               :key="dropdownItem"
@@ -76,7 +70,6 @@ import { ref } from "vue";
 
 const route = useRoute();
 const openDropdown = ref(null);
-const mobileOpen = ref(false);
 
 const menuItems = [
   {
@@ -150,21 +143,10 @@ const menuItems = [
 ];
 
 const toggleDropdown = (to) => {
-  openDropdown.value = openDropdown.value === to ? null : to;
+  if (openDropdown.value === to) {
+    openDropdown.value = null;
+  } else {
+    openDropdown.value = to;
+  }
 };
 </script>
-
-<style scoped>
-@media (max-width: 768px) {
-  aside {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    z-index: 50;
-    background: white;
-    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
-    width: 80%;
-  }
-}
-</style>
