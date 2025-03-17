@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide scrollbar for Chrome, Safari, and Edge */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.gradient-header {
+  background: linear-gradient(90deg, #0e2c4b 0%, #0080c9 100%);
+}
+.search-input::placeholder {
+  color: #a0aec0;
+}
+.pagination-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #cbd5e0;
+  display: inline-block;
+}
+.pagination-active {
+  background-color: #fe6a35;
+  color: white;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+input:checked + .toggle-slider {
+  background-color: #48a175;
+}
+input:checked + .toggle-slider:before {
+  transform: translateX(20px);
+}
